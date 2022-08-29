@@ -19,8 +19,17 @@ module "vpc" {
   pub_sub_cidr_1 = var.pub_sub_cidr_1
   pub_sub_cidr_2 = var.pub_sub_cidr_2
   pub_sub_cidr_3 = var.pub_sub_cidr_3
+
+  priv_sub_name_1 = var.priv_sub_name_1
+  priv_sub_name_2 = var.priv_sub_name_2
+  priv_sub_name_3 = var.priv_sub_name_3
+  priv_sub_cidr_1 = var.priv_sub_cidr_1
+  priv_sub_cidr_2 = var.priv_sub_cidr_2
+  priv_sub_cidr_3 = var.priv_sub_cidr_3
+ 
   igw_name = var.igw_name
   pub_rt_name = var.pub_rt_name
+  priv_rt_name = var.priv_rt_name
 }
 
 module "sg" {

@@ -47,11 +47,41 @@ variable "pub_sub_cidr_3" {
   type = string
 }
 
+#Private subnet values 
+variable "priv_sub_name_1" {
+ type = string
+}
+ 
+variable "priv_sub_name_2" {
+ type = string
+}
+ 
+variable "priv_sub_name_3" {
+ type = string
+}
+ 
+variable "priv_sub_cidr_1" {
+ type = string
+}
+ 
+variable "priv_sub_cidr_2" {
+ type = string
+}
+ 
+variable "priv_sub_cidr_3" {
+ type = string
+}
+
 #Internet Gateway
 variable "igw_name" {
   type = string
 }
 
+#Route Tables
 variable "pub_rt_name" {
+  type = string
+}
+
+variable "priv_rt_name" {
   type = string
 }
