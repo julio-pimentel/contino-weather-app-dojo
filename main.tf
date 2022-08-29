@@ -49,7 +49,6 @@ module "alb" {
 module "asg" {
   source = "./modules/asg"
 
-  ami_id = var.ami_id
   instance_type = var.instance_type
   pub_cidr_id_1 = module.vpc.pub_cidr_id_1
   pub_cidr_id_2 = module.vpc.pub_cidr_id_2

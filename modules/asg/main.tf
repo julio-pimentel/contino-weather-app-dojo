@@ -1,7 +1,24 @@
+data "aws_ami" "amazon-linux-2" {
+  most_recent = true
+  owners      = ["amazon"]
+
+
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
+
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+
 #Launch configuration 
 resource "aws_launch_configuration" "weather_pimentel_lc" {
   name_prefix  = "lc-weather-pimentel-"
-  image_id = var.ami_id
+  image_id = data.aws_ami.amazon-linux-2.id
   instance_type = var.instance_type
   security_groups = [var.alb_sg_id]
   key_name = "kp-devops-academy"
