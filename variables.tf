@@ -12,22 +12,22 @@ variable "tags" {
 
 # Region and AZs 
 variable "aws_region" {
-  default = "ap-southeast-2"
+  default = "us-east-1"
 }
 
 variable "az_a" {
   type = string
-  default = "ap-southeast-2a"
+  default = "us-east-1a"
 }
 
 variable "az_b" {
   type = string
-  default = "ap-southeast-2b"
+  default = "us-east-1b"
 }
 
 variable "az_c" {
   type = string
-  default = "ap-southeast-2c"
+  default = "us-east-1c"
 }
 
 #VPC
