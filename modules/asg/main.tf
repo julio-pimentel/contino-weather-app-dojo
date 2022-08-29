@@ -1,10 +1,20 @@
 #Launch configuration 
-resource "aws_launch_configuration" "launch_config" {
+resource "aws_launch_configuration" "weather_pimentel_lc" {
   name_prefix  = "lc-weather-pimentel-"
   image_id = var.ami_id
   instance_type = var.instance_type
   security_groups = [var.alb_sg_id]
   key_name = "kp-devops-academy"
+
+  user_data = <<EOF
+  #! /bin/bash
+  yum update -y
+  yum install -y httpd
+  curl 169.254.169.254/latest/meta-data/hostname > index.html
+  mv index.html /var/www/html/
+  systemctl start httpd
+  EOF
+
 
   lifecycle {
     create_before_destroy = true
@@ -20,7 +30,7 @@ resource "aws_autoscaling_group" "asg_1" {
 
   vpc_zone_identifier = [var.pub_cidr_id_1, var.pub_cidr_id_2, var.pub_cidr_id_3]
   force_delete = true
-  launch_configuration = aws_launch_configuration.launch_config.name
+  launch_configuration = aws_launch_configuration.weather_pimentel_lc.name
   health_check_type = "EC2"
   target_group_arns    = [var.alb_tg_arn]
 
@@ -30,7 +40,7 @@ resource "aws_autoscaling_group" "asg_1" {
     propagate_at_launch = true
   }
 
-  depends_on = [aws_launch_configuration.launch_config]
+  depends_on = [aws_launch_configuration.weather_pimentel_lc]
 }
 
 # ASG Policies
