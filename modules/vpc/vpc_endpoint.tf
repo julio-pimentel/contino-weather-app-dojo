@@ -7,16 +7,16 @@ resource "aws_vpc_endpoint" "s3" {
 }
 
 resource "aws_vpc_endpoint_route_table_association" "vpc_endpoint_rt_assoc_1" {
-  route_table_id  = aws_route_table.pub_rt_1.vpc_id  
+  route_table_id  = aws_route_table.pub_rt_1.id  
   vpc_endpoint_id = aws_vpc_endpoint.s3.id
 }
 
 resource "aws_vpc_endpoint_route_table_association" "vpc_endpoint_rt_assoc_2" {
-  route_table_id  = aws_route_table.pub_rt_2.vpc_id  
+  route_table_id  = aws_route_table.pub_rt_2.id  
   vpc_endpoint_id = aws_vpc_endpoint.s3.id
 }
 
 resource "aws_vpc_endpoint_route_table_association" "vpc_endpoint_rt_assoc_3" {
-  route_table_id  = aws_route_table.pub_rt_3.vpc_id  
+  route_table_id  = aws_route_table.pub_rt_3.id  
   vpc_endpoint_id = aws_vpc_endpoint.s3.id
 }
