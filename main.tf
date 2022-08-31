@@ -40,7 +40,7 @@ module "sg" {
 
   depends_on = [module.vpc]
 }
-
+/*
 module "alb" {
   source = "./modules/alb"
 
@@ -69,4 +69,4 @@ module "asg" {
   alb_sg_id = module.sg.alb_sg_id
 
   depends_on = [module.vpc, module.sg]
-}
+}*/

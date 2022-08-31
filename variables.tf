@@ -35,44 +35,13 @@ variable "az_c" {
 variable "vpc_cidr" {
   description = "VPC CIDR"
   type = string
-  default = "10.0.0.0/24"
+  default = "10.0.1.0/24"
 }
 
 variable "vpc_name" {
   description = "Name to set on the VPC"
   type = string
   default = "vpc-weather-app-pimentel"
-}
-
-#Public subnet values 
-variable "pub_sub_name_1" {
-  type = string
-  default = "pub-sub-weather-pimentel-1"
-}
-
-variable "pub_sub_name_2" {
-  type = string
-  default = "pub-sub-weather-pimentel-2"
-}
-
-variable "pub_sub_name_3" {
-  type = string
-  default = "pub-sub-weather-pimentel-3"
-}
-
-variable "pub_sub_cidr_1" {
-  type = string
-  default = "10.0.1.0/28"
-}
-
-variable "pub_sub_cidr_2" {
-  type = string
-  default = "10.0.2.0/28"
-}
-
-variable "pub_sub_cidr_3" {
-  type = string
-  default = "10.0.3.0/28"
 }
 
 #Private subnet values 
@@ -93,17 +62,48 @@ variable "priv_sub_name_3" {
 
 variable "priv_sub_cidr_1" {
   type = string
-  default = "10.0.4.0/28"
+  default = "10.0.1.0/26"
 }
 
 variable "priv_sub_cidr_2" {
   type = string
-  default = "10.0.5.0/28"
+  default = "10.0.1.64/26"
 }
 
 variable "priv_sub_cidr_3" {
   type = string
-  default = "10.0.4.0/28"
+  default = "10.0.1.128/26"
+}
+
+#Public subnet values 
+variable "pub_sub_name_1" {
+  type = string
+  default = "pub-sub-weather-pimentel-1"
+}
+
+variable "pub_sub_name_2" {
+  type = string
+  default = "pub-sub-weather-pimentel-2"
+}
+
+variable "pub_sub_name_3" {
+  type = string
+  default = "pub-sub-weather-pimentel-3"
+}
+
+variable "pub_sub_cidr_1" {
+  type = string
+  default = "10.0.1.192/28"
+}
+
+variable "pub_sub_cidr_2" {
+  type = string
+  default = "10.0.1.208/28"
+}
+
+variable "pub_sub_cidr_3" {
+  type = string
+  default = "10.0.1.224/28"
 }
 
 #Internet Gateway
