@@ -77,11 +77,34 @@ variable "igw_name" {
   type = string
 }
 
-#Route Tables
-variable "pub_rt_name" {
+# Public Route Tables
+variable "pub_rt_name_1" {
   type = string
 }
 
-variable "priv_rt_name" {
+variable "pub_rt_name_2" {
   type = string
+}
+
+variable "pub_rt_name_3" {
+  type = string
+}
+
+# Public Route Tables
+variable "priv_rt_name_1" {
+  type = string
+}
+
+variable "priv_rt_name_2" {
+  type = string
+}
+
+variable "priv_rt_name_3" {
+  type = string
+}
+
+#S3 Gateway Endpoint 
+variable "vpc_endpoint_name" {
+  type        = string
+  default = "weather-app-pimentel-s3-gateway"
 }

@@ -2,7 +2,7 @@
 variable "bucket" {
   type        = string
   description = "Specifies the name of an S3 Bucket"
-  default     = "weather-app-jpimentel-bucket"
+  default     = "weather-app-pimentel-bucket"
 }
 
 variable "tags" {
@@ -41,23 +41,23 @@ variable "vpc_cidr" {
 variable "vpc_name" {
   description = "Name to set on the VPC"
   type = string
-  default = "vpc-weather-app-pimentel"
+  default = "weather-app-pimentel-vpc"
 }
 
 #Private subnet values 
 variable "priv_sub_name_1" {
   type = string
-  default = "weather-app-privateA"
+  default = "weather-app-pimentel-privateA"
 }
 
 variable "priv_sub_name_2" {
   type = string
-  default = "weather-app-privateB"
+  default = "weather-app-pimentel-privateB"
 }
 
 variable "priv_sub_name_3" {
   type = string
-  default = "weather-app-privateC"
+  default = "weather-app-pimentel-privateC"
 }
 
 variable "priv_sub_cidr_1" {
@@ -78,17 +78,17 @@ variable "priv_sub_cidr_3" {
 #Public subnet values 
 variable "pub_sub_name_1" {
   type = string
-  default = "weather-app-publicA"
+  default = "weather-app-pimentel-publicA"
 }
 
 variable "pub_sub_name_2" {
   type = string
-  default = "weather-app-publicB"
+  default = "weather-app-pimentel-publicB"
 }
 
 variable "pub_sub_name_3" {
   type = string
-  default = "weather-app-publicC"
+  default = "weather-app-pimentel-publicC"
 }
 
 variable "pub_sub_cidr_1" {
@@ -109,29 +109,50 @@ variable "pub_sub_cidr_3" {
 #Internet Gateway
 variable "igw_name" {
   type = string
-  default = "igw-weather-app-pimentel"
+  default = "weather-app-pimentel-igw"
 }
 
-# Route Tables 
-variable "pub_rt_name" {
+# Public Route Tables 
+variable "pub_rt_name_1" {
   type = string
-  default = "public-rt-weather-app-pimentel"
+  default = "weather-app-pimentel-public-rt-1"
 }
 
-variable "priv_rt_name" {
+variable "pub_rt_name_2" {
   type = string
-  default = "private-rt-weather-app-pimentel"
+  default = "weather-app-pimentel-public-rt-2"
+}
+
+variable "pub_rt_name_3" {
+  type = string
+  default = "weather-app-pimentel-public-rt-3"
+}
+
+# Private Route Tables 
+variable "priv_rt_name_1" {
+  type = string
+  default = "weather-app-pimentel-private-rt-1"
+}
+
+variable "priv_rt_name_2" {
+  type = string
+  default = "weather-app-pimentel-private-rt-2"
+}
+
+variable "priv_rt_name_3" {
+  type = string
+  default = "weather-app-pimentel-private-rt-3"
 }
 
 #ALB
 variable "alb_name" {
   type = string
-  default = "alb-weather-app-pimentel"
+  default = "weather-app-pimentel-alb"
 }
 
 variable "alb_sg_name" {
   type = string
-  default = "alb-sg-weather-app-pimentel"
+  default = "weather-app-pimentel-alb-sg"
 }
 
 #EC2 instance 

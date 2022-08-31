@@ -8,7 +8,7 @@ resource "aws_route_table" "priv_rt_1" {
   }
 
   tags = {
-    Name = var.priv_rt_name
+    Name = var.priv_rt_name_1
   }
 }
 
@@ -21,7 +21,7 @@ resource "aws_route_table" "priv_rt_2" {
   }
 
   tags = {
-    Name = var.priv_rt_name
+    Name = var.priv_rt_name_2
   }
 }
 
@@ -34,7 +34,7 @@ resource "aws_route_table" "priv_rt_3" {
   }
 
   tags = {
-    Name = var.priv_rt_name
+    Name = var.priv_rt_name_3
   }
 }
 
