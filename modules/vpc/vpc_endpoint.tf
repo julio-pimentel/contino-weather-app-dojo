@@ -5,5 +5,5 @@ resource "aws_vpc_endpoint" "s3" {
 
 resource "aws_vpc_endpoint_route_table_association" "vpc_endpoint_rt_assoc" {
   route_table_id  = aws_route_table.pub_rt.id
-  vpc_endpoint_id = aws_vpc_endpoint.vpc_1.id
+  vpc_endpoint_id = aws_vpc_endpoint.s3.id
 }
