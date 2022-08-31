@@ -45,6 +45,11 @@ module "sg" {
 
   depends_on = [module.vpc]
 }
+
+module "ecr" {
+  source = "./modules/ecr"
+}
+
 /*
 module "alb" {
   source = "./modules/alb"
