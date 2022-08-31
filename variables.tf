@@ -2,7 +2,7 @@
 variable "bucket" {
   type        = string
   description = "Specifies the name of an S3 Bucket"
-  default     = "contino-weather-jpimentel-bucket"
+  default     = "weather-app-jpimentel-bucket"
 }
 
 variable "tags" {
@@ -47,17 +47,17 @@ variable "vpc_name" {
 #Private subnet values 
 variable "priv_sub_name_1" {
   type = string
-  default = "priv-sub-weather-pimentel-1"
+  default = "weather-app-privateA"
 }
 
 variable "priv_sub_name_2" {
   type = string
-  default = "priv-sub-weather-pimentel-2"
+  default = "weather-app-privateB"
 }
 
 variable "priv_sub_name_3" {
   type = string
-  default = "priv-sub-weather-pimentel-3"
+  default = "weather-app-privateC"
 }
 
 variable "priv_sub_cidr_1" {
@@ -78,17 +78,17 @@ variable "priv_sub_cidr_3" {
 #Public subnet values 
 variable "pub_sub_name_1" {
   type = string
-  default = "pub-sub-weather-pimentel-1"
+  default = "weather-app-publicA"
 }
 
 variable "pub_sub_name_2" {
   type = string
-  default = "pub-sub-weather-pimentel-2"
+  default = "weather-app-publicB"
 }
 
 variable "pub_sub_name_3" {
   type = string
-  default = "pub-sub-weather-pimentel-3"
+  default = "weather-app-publicC"
 }
 
 variable "pub_sub_cidr_1" {

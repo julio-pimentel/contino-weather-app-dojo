@@ -22,31 +22,6 @@ variable "az_c" {
   type = string
 }
 
-#Public subnet values 
-variable "pub_sub_name_1" {
-  type = string
-}
-
-variable "pub_sub_name_2" {
-  type = string
-}
-
-variable "pub_sub_name_3" {
-  type = string
-}
-
-variable "pub_sub_cidr_1" {
-  type = string
-}
-
-variable "pub_sub_cidr_2" {
-  type = string
-}
-
-variable "pub_sub_cidr_3" {
-  type = string
-}
-
 #Private subnet values 
 variable "priv_sub_name_1" {
  type = string
@@ -70,6 +45,31 @@ variable "priv_sub_cidr_2" {
  
 variable "priv_sub_cidr_3" {
  type = string
+}
+
+#Public subnet values 
+variable "pub_sub_name_1" {
+  type = string
+}
+
+variable "pub_sub_name_2" {
+  type = string
+}
+
+variable "pub_sub_name_3" {
+  type = string
+}
+
+variable "pub_sub_cidr_1" {
+  type = string
+}
+
+variable "pub_sub_cidr_2" {
+  type = string
+}
+
+variable "pub_sub_cidr_3" {
+  type = string
 }
 
 #Internet Gateway
