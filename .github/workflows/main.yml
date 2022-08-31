@@ -20,6 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Terraform_Plan
+      run: cd terraform/stack-1 
       run: make run_plan       
 
   terraform_apply:
