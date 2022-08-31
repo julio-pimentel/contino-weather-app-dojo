@@ -20,25 +20,25 @@ version:
 	
 .PHONY: init
 init:
-	$(COMPOSE_RUN_TERRAFORM) init -input=false
-	-$(COMPOSE_RUN_TERRAFORM) validate
-	-$(COMPOSE_RUN_TERRAFORM) fmt
+	$(COMPOSE_RUN_TERRAFORM) init -input=false -chdir="./terraform/stack-1" 
+	-$(COMPOSE_RUN_TERRAFORM) validate -chdir="./terraform/stack-1" 
+	-$(COMPOSE_RUN_TERRAFORM) fmt -chdir="./terraform/stack-1" 
 
 .PHONY: plan
 plan:
-	$(COMPOSE_RUN_TERRAFORM) plan -out=tfplan -input=false
+	$(COMPOSE_RUN_TERRAFORM) plan -out=tfplan -input=false -chdir="./terraform/stack-1" 
 
 .PHONY: apply
 apply:
-	$(COMPOSE_RUN_TERRAFORM) apply "tfplan"
+	$(COMPOSE_RUN_TERRAFORM) apply "tfplan" -chdir="./terraform/stack-1" 
 
 .PHONY: destroy_plan
 destroy_plan:
-	$(COMPOSE_RUN_TERRAFORM) plan -destroy
+	$(COMPOSE_RUN_TERRAFORM) plan -destroy -chdir="./terraform/stack-1" 
 
 .PHONY: destroy_apply
 destroy_apply:
-	$(COMPOSE_RUN_TERRAFORM) destroy -auto-approve
+	$(COMPOSE_RUN_TERRAFORM) destroy -auto-approve -chdir="./terraform/stack-1" 
 
 .PHONY: list_bucket
 list_bucket: 
