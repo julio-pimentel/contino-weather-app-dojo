@@ -106,5 +106,4 @@ variable "priv_rt_name_3" {
 #S3 Gateway Endpoint 
 variable "vpc_endpoint_name" {
   type        = string
-  default = "weather-app-pimentel-s3-gateway"
 }

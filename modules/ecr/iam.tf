@@ -54,7 +54,7 @@ resource "aws_ecr_repository_policy" "foopolicy" {
   "Version": "2008-10-17",
   "Statement": [
     {
-      "Sid": "Attach ECR Policity with IAM Role",
+      "Sid": "Attach ECR Policy with IAM Role",
       "Effect": "Allow",
       "Principal": {
         "AWS": "${aws_iam_role.EcsExecutionRole.arn}"

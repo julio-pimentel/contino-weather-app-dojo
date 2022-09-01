@@ -181,3 +181,31 @@ variable "asg_max" {
   type = string
   default = "3"
 }
+
+#ECS Tasks
+variable "container_port" {
+  description = "Port for Docker containers"
+  default = 8080
+}
+
+variable "ecs_tasks_sg_name" {
+  default = "weather-app-pimentel-ecs-sg"
+}
+
+# ECR Repo
+variable "iam_role_name" {
+   default = "julio-pimentel-EcsExecutionRole"
+}
+
+variable "iam_policy_name" {
+   default = "julio-pimentel-iam_policy"
+}
+
+variable "ecr_repo_name" {
+  default = "julio-pimentel-node-weather-app"
+}
+
+#S3 Gateway Endpoint 
+variable "vpc_endpoint_name" {
+  default = "weather-app-pimentel-s3-gateway"
+}

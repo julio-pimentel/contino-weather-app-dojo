@@ -1,5 +1,4 @@
 resource "aws_alb" "alb_01" {
-  name = var.alb_name
   internal = false
   load_balancer_type = "application"
   security_groups = [var.alb_sg_id]
@@ -13,7 +12,6 @@ resource "aws_alb" "alb_01" {
 }
 
 resource "aws_alb_target_group" "alb_tg" {
-  name = var.alb_tg_name
   target_type = "instance"
   port = 80
   protocol = "HTTP"

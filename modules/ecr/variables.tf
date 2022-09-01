@@ -1,7 +1,11 @@
 variable "iam_role_name" {
-   default = "julio-pimentel-EcsExecutionRole"
+   type = string
 }
 
 variable "iam_policy_name" {
-   default = "julio-pimentel-iam_policy"
+   type = string
+}
+
+variable "ecr_repo_name" {
+  type = string 
 }
