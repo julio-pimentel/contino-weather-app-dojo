@@ -2,7 +2,7 @@
 variable "bucket" {
   type        = string
   description = "Specifies the name of an S3 Bucket"
-  default     = "weather-app-pimentel-bucket"
+  default     = "weather-app-infra-pimentel-bucket"
 }
 
 variable "tags" {
