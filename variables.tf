@@ -209,3 +209,16 @@ variable "ecr_repo_name" {
 variable "vpc_endpoint_name" {
   default = "weather-app-pimentel-s3-gateway"
 }
+
+#EIP
+variable "eip_name_1" {
+  default = "weather-app-pimentel-eip-1"
+}
+
+variable "eip_name_2" {
+  default = "weather-app-pimentel-eip-2"
+}
+
+variable "eip_name_3" {
+  default = "weather-app-pimentel-eip-3"
+}

@@ -107,3 +107,16 @@ variable "priv_rt_name_3" {
 variable "vpc_endpoint_name" {
   type        = string
 }
+
+#EIP
+variable "eip_name_1" {
+  type        = string
+}
+
+variable "eip_name_2" {
+  type        = string
+}
+
+variable "eip_name_3" {
+  type        = string
+}

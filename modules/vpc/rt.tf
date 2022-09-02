@@ -74,7 +74,7 @@ resource "aws_route_table" "pub_rt_3" {
   }
 
   tags = {
-    Name = var.pub_rt_name_2
+    Name = var.pub_rt_name_3
   }
 }
 

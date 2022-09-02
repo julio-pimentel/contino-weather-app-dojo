@@ -35,6 +35,10 @@ module "vpc" {
   pub_rt_name_1 = var.pub_rt_name_1
   pub_rt_name_2 = var.pub_rt_name_2
   pub_rt_name_3 = var.pub_rt_name_3
+
+  eip_name_1 = var.eip_name_1
+  eip_name_2 = var.eip_name_2
+  eip_name_3 = var.eip_name_3
 }
 
 module "sg" {
