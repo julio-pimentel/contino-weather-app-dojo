@@ -144,41 +144,19 @@ variable "priv_rt_name_3" {
   default = "weather-app-pimentel-private-rt-3"
 }
 
-#EC2 instance 
-variable "ami_id" {
-  type = string
-  default = "ami-0c641f2290e9cd048"
+#Security group names
+variable "alb_sg_name" {
+  default = "weather-app-pimentel-alb-sg"
 }
 
-variable "instance_type" {
-  type = string
-  default = "t2.micro"
-}
-
-#ASG policy values 
-variable "asg_min" {
-  type = string
-  default = "1"
-}
-
-variable "asg_desired" {
-  type = string
-  default = "2"
-}
-
-variable "asg_max" {
-  type = string
-  default = "3"
+variable "ecs_tasks_sg_name" {
+  default = "weather-app-pimentel-ecs-sg"
 }
 
 #ECS Tasks
 variable "container_port" {
   description = "Port for Docker containers"
   default = 3000
-}
-
-variable "ecs_tasks_sg_name" {
-  default = "weather-app-pimentel-ecs-sg"
 }
 
 # ECR Repo
