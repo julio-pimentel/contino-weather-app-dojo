@@ -185,7 +185,7 @@ variable "asg_max" {
 #ECS Tasks
 variable "container_port" {
   description = "Port for Docker containers"
-  default = 8080
+  default = 3000
 }
 
 variable "ecs_tasks_sg_name" {

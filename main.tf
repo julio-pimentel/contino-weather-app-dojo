@@ -52,20 +52,6 @@ module "sg" {
   depends_on = [module.vpc]
 }
 
-module "alb" {
-  source = "./modules/alb"
-
-  pub_cidr_id_1 = module.vpc.pub_cidr_id_1
-  pub_cidr_id_2 = module.vpc.pub_cidr_id_2
-  pub_cidr_id_3 = module.vpc.pub_cidr_id_3
-  alb_name = var.alb_name
-  alb_sg_id = module.sg.alb_sg_id
-  vpc_id = module.vpc.vpc_id
-
-  depends_on = [module.vpc, module.sg]
-}
-
-
 module "ecr" {
   source = "./modules/ecr"
 
@@ -73,22 +59,3 @@ module "ecr" {
   iam_role_name = var.iam_role_name
   iam_policy_name = var.iam_policy_name
 }
-
-
-/*
-module "asg" {
-  source = "./modules/asg"
-
-  instance_type = var.instance_type
-  pub_cidr_id_1 = module.vpc.pub_cidr_id_1
-  pub_cidr_id_2 = module.vpc.pub_cidr_id_2
-  pub_cidr_id_3 = module.vpc.pub_cidr_id_3
-  asg_desired = var.asg_desired
-  asg_min = var.asg_min
-  asg_max = var.asg_max
-  alb_tg_arn = module.alb.alb_tg_arn
-  alb_sg_id = module.sg.alb_sg_id
-
-  depends_on = [module.vpc, module.sg]
-}
-*/
