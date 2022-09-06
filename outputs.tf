@@ -27,9 +27,3 @@ output "public_subnet_3_id" {
   description = "Public Subnet ID for AZ-c"
   value = module.vpc.pub_cidr_id_3
 }
-/*
-output "alb_dns_name" {
-  description = "ALB DNS name"
-  value = module.alb.alb_dns_name
-}
-*/
