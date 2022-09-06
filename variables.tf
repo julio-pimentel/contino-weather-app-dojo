@@ -144,17 +144,6 @@ variable "priv_rt_name_3" {
   default = "weather-app-pimentel-private-rt-3"
 }
 
-#ALB
-variable "alb_name" {
-  type = string
-  default = "weather-app-pimentel-alb"
-}
-
-variable "alb_sg_name" {
-  type = string
-  default = "weather-app-pimentel-alb-sg"
-}
-
 #EC2 instance 
 variable "ami_id" {
   type = string

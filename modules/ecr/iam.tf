@@ -8,14 +8,14 @@ resource "aws_iam_role" "EcsExecutionRole" {
         Effect = "Allow"
         Sid    = ""
         Principal = {
-          Service = "ec2.amazonaws.com"
+          Service = "ecs-tasks.amazonaws.com"
         }
       },
     ]
   })
 
   tags = {
-    Name = "tag-value"
+    Name = var.iam_role_name
   }
 }
 
