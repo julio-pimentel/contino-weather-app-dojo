@@ -4,7 +4,7 @@ resource "aws_route_table" "priv_rt_1" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.ngw_1.id
+    nat_gateway_id = aws_nat_gateway.ngw_1.id
   }
 
   tags = {
@@ -17,7 +17,7 @@ resource "aws_route_table" "priv_rt_2" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.ngw_2.id
+    nat_gateway_id = aws_nat_gateway.ngw_2.id
   }
 
   tags = {
@@ -30,7 +30,7 @@ resource "aws_route_table" "priv_rt_3" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.ngw_3.id
+    nat_gateway_id = aws_nat_gateway.ngw_3.id
   }
 
   tags = {

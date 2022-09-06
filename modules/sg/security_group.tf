@@ -9,14 +9,6 @@ resource "aws_security_group" "alb_sg_1" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    description = "Allow SSH ingress through port 22"
-    protocol    = "tcp"
-    from_port   = 22
-    to_port     = 22
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   egress {
     description = "Allow all egress traffic to anywhere"
     from_port   = 0

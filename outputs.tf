@@ -54,7 +54,7 @@ output "alb_sg_id" {
 
 output "ecs_tasks_sg_id" {
   description = "ECS tasks SG ID"
-  value       = module.sg.alb_sg_id
+  value       = module.sg.ecs_tasks_sg_id
 }
 
 output "ecr_repository_url" {
