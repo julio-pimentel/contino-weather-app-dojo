@@ -1,24 +1,24 @@
 # Elastic IPs
-resource "aws_eip" "eip_1" {
+resource "aws_eip" "eip_a" {
   vpc = true
 
   tags = {
-    Name = var.eip_name_1
+    Name = var.eip_name_a
   }
 }
 
-resource "aws_eip" "eip_2" {
+resource "aws_eip" "eip_b" {
   vpc = true
 
   tags = {
-    Name = var.eip_name_2
+    Name = var.eip_name_b
   }
 }
 
-resource "aws_eip" "eip_3" {
+resource "aws_eip" "eip_c" {
   vpc = true
 
   tags = {
-    Name = var.eip_name_3
+    Name = var.eip_name_c
   }
 }

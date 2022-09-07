@@ -1,6 +1,7 @@
+# Security group ID
 output "alb_sg_id" {
   description = "ALB SG ID"
-  value       = aws_security_group.alb_sg_1.id
+  value       = aws_security_group.lb_sg.id
 }
 
 output "ecs_tasks_sg_id" {

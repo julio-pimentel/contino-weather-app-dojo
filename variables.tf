@@ -1,7 +1,7 @@
 # S3 bucket values 
 variable "bucket" {
   type        = string
-  description = "Specifies the name of an S3 Bucket"
+  description = "S3 bucket name - must be globally unique"
   default     = "weather-app-infra-pimentel-bucket"
 }
 
@@ -11,181 +11,224 @@ variable "tags" {
   default     = {}
 }
 
-# Region and AZs 
-variable "aws_region" {
-  default = "us-east-1"
-}
-
-variable "az_a" {
-  type = string
-  default = "us-east-1a"
-}
-
-variable "az_b" {
-  type = string
-  default = "us-east-1b"
-}
-
-variable "az_c" {
-  type = string
-  default = "us-east-1c"
-}
-
 #VPC
 variable "vpc_cidr" {
-  description = "VPC CIDR"
+  description = "IPv4 CIDR block and block size"
   type = string
   default = "10.0.1.0/24"
 }
 
 variable "vpc_name" {
-  description = "Name to set on the VPC"
+  description = "VPC name"
   type = string
   default = "weather-app-pimentel-vpc"
 }
 
+#Internet Gateway
+variable "igw_name" {
+  description = "Internet Gateway name"
+  type = string
+  default = "weather-app-pimentel-igw"
+}
+
+#S3 Gateway Endpoint 
+variable "vpc_endpoint_name" {
+  description = "VPC endpoint name"
+  type = string 
+  default = "weather-app-pimentel-s3-gateway"
+}
+
+# Region and AZs 
+variable "aws_region" {
+  description = "Region where the project will be deployed"
+  type = string 
+  default = "us-east-1"
+}
+
+variable "az_a" {
+  description = "Availability Zone A"
+  type = string
+  default = "us-east-1a"
+}
+
+variable "az_b" {
+  description = "Availability Zone B"
+  type = string
+  default = "us-east-1b"
+}
+
+variable "az_c" {
+  description = "Availability Zone C"
+  type = string
+  default = "us-east-1c"
+}
+
 #Private subnet values 
-variable "priv_sub_name_1" {
+variable "priv_sub_name_a" {
+  description = "Private subnet A name"
   type = string
   default = "weather-app-pimentel-privateA"
 }
 
-variable "priv_sub_name_2" {
+variable "priv_sub_name_b" {
+  description = "Private subnet B name"
   type = string
   default = "weather-app-pimentel-privateB"
 }
 
-variable "priv_sub_name_3" {
+variable "priv_sub_name_c" {
+  description = "Private subnet C name"
   type = string
   default = "weather-app-pimentel-privateC"
 }
 
-variable "priv_sub_cidr_1" {
+variable "priv_sub_cidr_a" {
+  description = "Private subnet A IPv4 CIDR block and block size "
   type = string
   default = "10.0.1.0/26"
 }
 
-variable "priv_sub_cidr_2" {
+variable "priv_sub_cidr_b" {
+  description = "Private subnet B IPv4 CIDR block and block size "
   type = string
   default = "10.0.1.64/26"
 }
 
-variable "priv_sub_cidr_3" {
+variable "priv_sub_cidr_c" {
+  description = "Private subnet C IPv4 CIDR block and block size "
   type = string
   default = "10.0.1.128/26"
 }
 
 #Public subnet values 
-variable "pub_sub_name_1" {
+variable "pub_sub_name_a" {
+  description = "Public subnet A name"
   type = string
   default = "weather-app-pimentel-publicA"
 }
 
-variable "pub_sub_name_2" {
+variable "pub_sub_name_b" {
+  description = "Public subnet B name"
   type = string
   default = "weather-app-pimentel-publicB"
 }
 
-variable "pub_sub_name_3" {
+variable "pub_sub_name_c" {
+  description = "Public subnet C name"
   type = string
   default = "weather-app-pimentel-publicC"
 }
 
-variable "pub_sub_cidr_1" {
+variable "pub_sub_cidr_a" {
+  description = "Public subnet A IPv4 CIDR block and block size"
   type = string
   default = "10.0.1.192/28"
 }
 
-variable "pub_sub_cidr_2" {
+variable "pub_sub_cidr_b" {
+  description = "Public subnet B IPv4 CIDR block and block size"
   type = string
   default = "10.0.1.208/28"
 }
 
-variable "pub_sub_cidr_3" {
+variable "pub_sub_cidr_c" {
+  description = "Public subnet C IPv4 CIDR block and block size"
   type = string
   default = "10.0.1.224/28"
 }
 
-#Internet Gateway
-variable "igw_name" {
+# Private Route Tables 
+variable "priv_rt_name_a" {
+  description = "Private route table A"
   type = string
-  default = "weather-app-pimentel-igw"
+  default = "weather-app-pimentel-private-rt-a"
+}
+
+variable "priv_rt_name_b" {
+  description = "Private route table B"
+  type = string
+  default = "weather-app-pimentel-private-rt-b"
+}
+
+variable "priv_rt_name_c" {
+  description = "Private route table C"
+  type = string
+  default = "weather-app-pimentel-private-rt-c"
 }
 
 # Public Route Tables 
-variable "pub_rt_name_1" {
+variable "pub_rt_name_a" {
+  description = "Public route table A"
   type = string
-  default = "weather-app-pimentel-public-rt-1"
+  default = "weather-app-pimentel-public-rt-a"
 }
 
-variable "pub_rt_name_2" {
+variable "pub_rt_name_b" {
+  description = "Public route table B"
   type = string
-  default = "weather-app-pimentel-public-rt-2"
+  default = "weather-app-pimentel-public-rt-b"
 }
 
-variable "pub_rt_name_3" {
+variable "pub_rt_name_c" {
+  description = "Public route table C"
   type = string
-  default = "weather-app-pimentel-public-rt-3"
+  default = "weather-app-pimentel-public-rt-c"
 }
 
-# Private Route Tables 
-variable "priv_rt_name_1" {
+#EIP
+variable "eip_name_a" {
+  description = "Elastic IP address A name"
   type = string
-  default = "weather-app-pimentel-private-rt-1"
+  default = "weather-app-pimentel-eip-a"
 }
 
-variable "priv_rt_name_2" {
+variable "eip_name_b" {
+  description = "Elastic IP address B name"
   type = string
-  default = "weather-app-pimentel-private-rt-2"
+  default = "weather-app-pimentel-eip-b"
 }
 
-variable "priv_rt_name_3" {
+variable "eip_name_c" {
+  description = "Elastic IP address C name"
   type = string
-  default = "weather-app-pimentel-private-rt-3"
+  default = "weather-app-pimentel-eip-c"
 }
 
 #Security group names
-variable "alb_sg_name" {
-  default = "weather-app-pimentel-alb-sg"
+variable "lb_sg_name" {
+  description = "Security group name for Load Balancer"
+  type = string
+  default = "weather-app-pimentel-lb-sg"
 }
 
 variable "ecs_tasks_sg_name" {
+  description = "Security group name for ECS Tasks"
+  type = string
   default = "weather-app-pimentel-ecs-sg"
 }
 
 #ECS Tasks
 variable "container_port" {
   description = "Port for Docker containers"
+  type = number 
   default = 3000
 }
 
 # ECR Repo
-variable "iam_role_name" {
-   default = "julio-pimentel-EcsExecutionRole"
-}
-
-variable "iam_policy_name" {
-   default = "julio-pimentel-iam_policy"
-}
-
 variable "ecr_repo_name" {
+  description = "ECR repository name"
+  type = string
   default = "julio-pimentel-node-weather-app"
 }
 
-#S3 Gateway Endpoint 
-variable "vpc_endpoint_name" {
-  default = "weather-app-pimentel-s3-gateway"
+variable "iam_role_name" {
+  description = "ECS Task execution IAM role name"
+  type = string
+  default = "julio-pimentel-EcsExecutionRole"
 }
 
-#EIP
-variable "eip_name_1" {
-  default = "weather-app-pimentel-eip-1"
-}
-
-variable "eip_name_2" {
-  default = "weather-app-pimentel-eip-2"
-}
-
-variable "eip_name_3" {
-  default = "weather-app-pimentel-eip-3"
+variable "iam_policy_name" {
+  description = "ECS Task execution IAM policy"
+  type = string
+  default = "julio-pimentel-EcsEcrAccess"
 }

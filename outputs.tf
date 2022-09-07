@@ -9,44 +9,40 @@ output "bucket_name_arn" {
   value       = ["${module.s3_bucket.s3_bucket_name_arn}"]
 }
 
+
 #VPC
 output "vpc_id" {
   description = "VPC ID"
   value = module.vpc.vpc_id
 }
 
-#Public subnet
-output "public_subnet_1_id" {
-  description = "Public Subnet ID for AZ-a"
-  value = module.vpc.pub_cidr_id_1
-}
-
-output "public_subnet_2_id" {
-  description = "Public Subnet ID for AZ-b"
-  value = module.vpc.pub_cidr_id_2
-}
-
-output "public_subnet_3_id" {
-  description = "Public Subnet ID for AZ-c"
-  value = module.vpc.pub_cidr_id_3
-}
-
 #Private subnet
-output "private_subnet_1_id" {
-  description = "Private Subnet ID for AZ-a"
-  value = module.vpc.priv_cidr_id_1
+output "priv_cidr_id_a" {
+  value = module.vpc.priv_cidr_id_a
 }
 
-output "private_subnet_2_id" {
-  description = "Private Subnet ID for AZ-b"
-  value = module.vpc.priv_cidr_id_2
+output "priv_cidr_id_b" {
+  value = module.vpc.priv_cidr_id_b
 }
 
-output "private_subnet_3_id" {
-  description = "Private Subnet ID for AZ-c"
-  value = module.vpc.priv_cidr_id_3
+output "priv_cidr_id_c" {
+  value = module.vpc.priv_cidr_id_c
 }
 
+#Public subnet
+output "pub_cidr_id_a" {
+  value = module.vpc.pub_cidr_id_a
+}
+
+output "pub_cidr_id_b" {
+  value = module.vpc.pub_cidr_id_b
+}
+
+output "pub_cidr_id_c" {
+  value = module.vpc.pub_cidr_id_c
+}
+
+# Security group ID
 output "alb_sg_id" {
   description = "ALB SG ID"
   value       = module.sg.alb_sg_id
@@ -59,4 +55,8 @@ output "ecs_tasks_sg_id" {
 
 output "ecr_repository_url" {
     value = module.ecr.ecr_repository_url
+}
+
+output "ecs_task_execution_role_arn" {
+    value = module.ecr.ecs_task_execution_role_arn
 }

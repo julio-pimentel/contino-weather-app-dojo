@@ -1,32 +1,7 @@
+# Weather-App Infrastructure repository
 
-
-# Pathways Dojo Infra Node Weather App Quick Starter
-
-This repository is used in conjunction with the Contino Infra Engineer to Cloud Engineer Pathway course delivered in Contini-U.
-
-It includes and supports the following functionality:
-* Dockerfile and docker-compose configuration for 3M based deployments
-* Makefile providing basic Terraform deployment functionality
-* GitHub workflows for supporting basic Terraform deploy and destroy functionality
-* Terraform IaC for the test deployment of an s3 bucket
-* Node Weather App - https://github.com/phattp/nodejs-weather-app
-
-<br> 
-
-## Getting Started
-This GitHub template should be used to create your own repository. Repository will need to be public if you are creating it in your personal GitHub account in order to support approval gates in GitHub actions. Configure the following to get started:
-* Clone your repository locally. It should have a branch named `master`.
-* Create a `destroy` branch in your GitHub repo. This will be used to trigger Terraform Destroy workflow during pull request from `master->destroy`.
-* Create an environment in your repository named `approval` to support GitHub Workflows, selecting `required reviewers` and adding yourself as an approver.
-* Update the `key` value in the `meta.tf` file replacing `<username>` with your username for the name of the Terraform state file.
-* Update the default bucket name in the `variable.tf` file to a something globally unique.
-* Create GitHub Secrets in your repository for `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN` if using temporary credentials.
-* Push local changes to the GitHub repos master branch, which should trigger the Github deploy workflow, and deploy the s3 bucket. Remember to review tf plan and approve apply.
-* Create a pull request to merge master changes to destroy branch. Merge changes to trigger the Github destroy workflow deleting the s3 bucket. Remember to review the tf speculative plan and approve destroy.
-* You can list s3 bucket in the APAC Dev account by running `make list_bucket` locally within the repo clone, to check bucket creation and removal.
-
-
-Keep reading for in-depth details.
+This repository is used to deploy the required infrastructure in the Contino APAC AWS account. It requires the following aws credentials to be updated in Github Secrets before deploying this repo: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN`.
+This project should be the first deployment of the app. 
 
 <br> 
 
@@ -81,35 +56,13 @@ Additionally, ONLY changes to the following files and paths will trigger a workf
       - '**.tf'
 ```
 
-<br>
-
-### main.yml workflow
-![Main Workflow](images/main.yml_workflow.png)
-
-<br>
-
-### destroy.yml workflow
-![Destroy Workflow](images/destroy.yml_workflow.png)
-
-<br>
-
-Create an environment in your repository named `approval` to support GitHub Workflows, selecting `required reviewers` adding yourself as an approver.
-
 <br> 
-
-![GitHub Environment](images/github_environment.png)
-
-<br> 
-
-## GitHub Secrets
-Create GitHub Secrets in your repository for `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN` if using temporary credentials. ONLY `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` required if you have configured an IAM user with programmatic access.
-
-<br>
 
 ## Terraform IaC
-The base Terraform environment has been setup to get you started. This includes `providers.tf`, `meta.tf`, `variables.tf` and `main.tf` which leverages the `s3.tf` module created in `modules/s3`. 
-
-The `modules` folder allows you to organise your `.tf` files are called by `main.tf`.
+The infrastructure is based on the following Terraform modules: 
+* ECR: 1 repository and its IAM role and IAM policies. 
+* Security Group: security groups for ALB and ECS. 
+* VPC: 1 VPC network, 3 public and 3 private subnets, 1 IGW, 3 NGW, 3 public and 3 private route tables, and 1 S3 Gateway Endpoint.
 
 ### Inputs
 ---
@@ -119,8 +72,42 @@ The `modules` folder allows you to organise your `.tf` files are called by `main
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket | S3 bucket name - must be globally unique | string | my-tf-test-bucket7717 | yes |
-| tags | Tags to be applied to AWS resources| map(string) | `null` | no |
+| bucket | S3 bucket name - must be globally unique | string | weather-app-infra-pimentel-bucket | yes |
+| vpc_cidr | IPv4 CIDR block and block size |  string | 10.0.1.0/24 | yes |
+| vpc_name | VPC name | string | weather-app-pimentel-vpc | yes |
+| igw_name | Internet Gateway name | string | weather-app-pimentel-igw | yes |
+| vpc_endpoint_name | VPC endpoint name | string | weather-app-pimentel-s3-gateway | yes |
+| aws_region | Region where the project will be deployed | string | us-east-1 | yes |
+| az_a | Availability Zone A | string | us-east-1a | yes |
+| az_b | Availability Zone B | string | us-east-1b | yes |
+| az_c | Availability Zone C | string | us-east-1c | yes |
+| priv_sub_name_a | Private subnet A name | string | weather-app-pimentel-privateA | yes |
+| priv_sub_name_b | Private subnet B name | string | weather-app-pimentel-privateB | yes |
+| priv_sub_name_c | Private subnet C name | string | weather-app-pimentel-privateC | yes |
+| pub_sub_name_a | Public subnet A name | string | weather-app-pimentel-publicA | yes |
+| pub_sub_name_b | Public subnet B name | string | weather-app-pimentel-publicB | yes |
+| pub_sub_name_c | Public subnet C name | string | weather-app-pimentel-publicC | yes |
+| priv_sub_cidr_a | Private subnet A IPv4 CIDR block and block size | string | 10.0.1.0/26 | yes |
+| priv_sub_cidr_b | Private subnet B IPv4 CIDR block and block size | string | 10.0.1.64/26 | yes |
+| priv_sub_cidr_c | Private subnet C IPv4 CIDR block and block size | string | 10.0.1.128/26 | yes |
+| pub_sub_cidr_a | Public subnet A IPv4 CIDR block and block size | string | 10.0.1.192/28 | yes |
+| pub_sub_cidr_b | Public subnet B IPv4 CIDR block and block size | string | 10.0.1.208/28 | yes |
+| pub_sub_cidr_c | Public subnet C IPv4 CIDR block and block size | string | 10.0.1.224/28 | yes |
+| priv_rt_name_a | Private route table A | string | weather-app-pimentel-private-rt-a | yes |
+| priv_rt_name_b | Private route table B | string | weather-app-pimentel-private-rt-b | yes |
+| priv_rt_name_c | Private route table C | string | weather-app-pimentel-private-rt-c | yes | 
+| pub_rt_name_a | Public route table A | string | weather-app-pimentel-public-rt-a | yes |
+| pub_rt_name_b | Public route table B | string | weather-app-pimentel-public-rt-b | yes |
+| pub_rt_name_c | Public route table C | string | weather-app-pimentel-public-rt-c | yes |
+| eip_name_a | Elastic IP address A name | string | weather-app-pimentel-eip-a | yes |
+| eip_name_b | Elastic IP address B name | string | weather-app-pimentel-eip-b | yes |
+| eip_name_c | Elastic IP address C name | string | weather-app-pimentel-eip-c | yes |
+| lb_sg_name | Security group name for Load Balancer | string | weather-app-pimentel-lb-sg | yes |
+| ecs_tasks_sg_name | Security group name for ECS Tasks | string | weather-app-pimentel-ecs-sg | yes |
+| container_port | Port for Docker containers | number | 3000 | yes |
+| ecr_repo_name | ECR repository name | string | julio-pimentel-node-weather-app | yes |
+| iam_role_name | ECS Task execution IAM role name | string | julio-pimentel-EcsExecutionRole | yes |
+| iam_policy_name | ECS Task execution IAM policy | string | julio-pimentel-EcsEcrAccess | yes |
 
 
 </details>
@@ -135,54 +122,34 @@ The `modules` folder allows you to organise your `.tf` files are called by `main
 
 | Name | Description |
 |------|-------------|
-| bucket_name | The name of the S3 Bucket. | |
-| bucket_name_arn | The ARN of the S3 Bucket. | |
-
+| bucket_name | S3 bucket ARN | |
+| bucket_name_arn | S3 bucket ARN | |
+| vpc_id | VPC ID | |
+| priv_cidr_id_a | Private subnet A ID | |
+| priv_cidr_id_b | Private subnet B ID | |
+| priv_cidr_id_c | Private subnet C ID | |
+| pub_cidr_id_a | Public subnet A ID | |
+| pub_cidr_id_b | Public subnet B ID | |
+| pub_cidr_id_c | Public subnet C ID | |
+| alb_sg_id | Security group for ALB ID | |
+| ecs_tasks_sg_id | Security group for ECS Task ID | |
+| ecr_repository_url | ECR repository URL | |
+| ecs_task_execution_role_arn | ECS Task execution role ARN | |
 
 </details>
 
 <br>
 
 ### TF State Files
-AWS S3 is used to host the TF state files. This is hosted by s3://pathways-dojo. You will need to update the name of the state file in the `meta.tf` file replacing `<username>` with your username.
+AWS S3 is used to host the TF state files. This is hosted by s3://pathways-dojo. 
 
 ```
 terraform {
   required_version = ">= 0.13.0"
   backend "s3" {
     bucket = "pathways-dojo"
-    key    = <username>-tfstate
+    key    = "julio-pimentel-infra-tfstate-main"
     region = "us-east-1"
   }
 }
 ```
-
-## Node Weather App
-
-The simple weather forecast application using Node.js.
-Link: https://github.com/phattp/nodejs-weather-app
-
-### Getting Started
-
-This repository is contain code of my weather forecast application that you can predict the weather from a location.
-This project is the part of [The Complete Node.js Developer Course](https://www.udemy.com/the-complete-nodejs-developer-course-2/) by Andrew Mead on Udemy.
-
-Visit [Live Site](https://phatt-weather-app.herokuapp.com/)
-
-### Installing
-
-Install node modules.
-
-```
-npm install
-```
-
-### Running the App
-
-Run this app in devlopment mode with command below and navigate to http://localhost:3000 to see the app.
-
-```
-npm run dev
-```
-
-Happy Hacking!

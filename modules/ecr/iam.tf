@@ -46,7 +46,7 @@ resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
   policy_arn = aws_iam_policy.EcsEcrAccess.arn
 }
 
-resource "aws_ecr_repository_policy" "foopolicy" {
+resource "aws_ecr_repository_policy" "ecr_policy" {
   repository = aws_ecr_repository.ecr_repo.name
 
   policy = <<EOF

@@ -1,4 +1,4 @@
-resource "aws_security_group" "alb_sg_1" {
+resource "aws_security_group" "lb_sg" {
   vpc_id = var.vpc_id
 
   ingress {
@@ -18,7 +18,7 @@ resource "aws_security_group" "alb_sg_1" {
   }
 
   tags = {
-    Name = var.alb_sg_name
+    Name = var.lb_sg_name
   }
 }
 
@@ -30,6 +30,7 @@ resource "aws_security_group" "ecs_tasks_sg" {
     protocol    = "tcp"
     from_port   = var.container_port
     to_port     = var.container_port
+    #security_groups = [aws_security_group.lb_sg.id]
     cidr_blocks = ["0.0.0.0/0"]
   }
 
