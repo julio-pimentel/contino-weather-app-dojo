@@ -45,7 +45,7 @@ output "pub_cidr_id_c" {
 # Security group ID
 output "alb_sg_id" {
   description = "ALB SG ID"
-  value       = module.sg.alb_sg_id
+  value       = module.sg.lb_sg_id
 }
 
 output "ecs_tasks_sg_id" {
