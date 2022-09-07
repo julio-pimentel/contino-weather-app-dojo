@@ -48,6 +48,7 @@ module "sg" {
 
   vpc_id = module.vpc.vpc_id
   lb_sg_name = var.lb_sg_name
+  ssm_prefix = var.ssm_prefix
   ecs_tasks_sg_name = var.ecs_tasks_sg_name
   container_port = var.container_port
 
@@ -60,4 +61,5 @@ module "ecr" {
   ecr_repo_name = var.ecr_repo_name
   iam_role_name = var.iam_role_name
   iam_policy_name = var.iam_policy_name
+  ssm_prefix = var.ssm_prefix
 }
