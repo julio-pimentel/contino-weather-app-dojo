@@ -232,3 +232,10 @@ variable "iam_policy_name" {
   type = string
   default = "julio-pimentel-EcsEcrAccess"
 }
+
+# SSM parameter store 
+variable "ssm_prefix" {
+  default = "Prefix for SSM Parameter Store"
+  type = store
+  default = "weather-app-pimentel"
+}
