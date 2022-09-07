@@ -1,6 +1,7 @@
 module "s3_bucket" {
   source = "./modules/s3"
   bucket = var.bucket
+  ssm_prefix = var.ssm_prefix
 
   tags = var.tags
 }
