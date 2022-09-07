@@ -235,7 +235,7 @@ variable "iam_policy_name" {
 
 # SSM parameter store 
 variable "ssm_prefix" {
-  default = "Prefix for SSM Parameter Store"
+  description = "Prefix for SSM Parameter Store"
   type = string
   default = "weather-app-pimentel"
 }
