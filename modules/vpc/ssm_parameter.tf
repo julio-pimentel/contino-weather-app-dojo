@@ -1,9 +1,3 @@
-resource "aws_ssm_parameter" "vpc_id" {
-  name  = "/${var.ssm_resource_prefix}/vpc/id"
-  type  = "String"
-  value = module.vpc.vpc_id
-}
-
 #VPC
 resource "aws_ssm_parameter" "vpc_id" {
   name  = "/${var.ssm_prefix}/infra/vpc/vpc_id"
