@@ -1,8 +1,7 @@
 ### Define Variables
-variable "bucket" {
-  default     = ""
-}
+variable "bucket" {}
 
-variable "tags" {
-  default     = {}
-}
+variable "tags" {}
+
+# SSM parameter store 
+variable "ssm_prefix" {}

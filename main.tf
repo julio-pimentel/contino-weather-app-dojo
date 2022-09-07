@@ -12,6 +12,7 @@ module "vpc" {
   vpc_name = var.vpc_name
   igw_name = var.igw_name
   vpc_endpoint_name = var.vpc_endpoint_name
+  ssm_prefix = var.ssm_prefix
   aws_region = var.aws_region
   az_a = var.az_a
   az_b = var.az_b
