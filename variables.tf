@@ -42,25 +42,25 @@ variable "vpc_endpoint_name" {
 variable "aws_region" {
   description = "Region where the project will be deployed"
   type = string 
-  default = "us-east-1"
+  default = "ap-southeast-2"
 }
 
 variable "az_a" {
   description = "Availability Zone A"
   type = string
-  default = "us-east-1a"
+  default = "${var.aws_region}a"
 }
 
 variable "az_b" {
   description = "Availability Zone B"
   type = string
-  default = "us-east-1b"
+  default = "${var.aws_region}b"
 }
 
 variable "az_c" {
   description = "Availability Zone C"
   type = string
-  default = "us-east-1c"
+  default = "${var.aws_region}c"
 }
 
 #Private subnet values 

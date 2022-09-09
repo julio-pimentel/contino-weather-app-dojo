@@ -131,7 +131,7 @@ The infrastructure is based on the following Terraform modules:
 | pub_cidr_id_a | Public subnet A ID | |
 | pub_cidr_id_b | Public subnet B ID | |
 | pub_cidr_id_c | Public subnet C ID | |
-| alb_sg_id | Security group for ALB ID | |
+| lb_sg_id | Security group for Load Balancer ID | |
 | ecs_tasks_sg_id | Security group for ECS Task ID | |
 | ecr_repository_url | ECR repository URL | |
 | ecs_task_execution_role_arn | ECS Task execution role ARN | |
