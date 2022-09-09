@@ -48,19 +48,19 @@ variable "aws_region" {
 variable "az_a" {
   description = "Availability Zone A"
   type = string
-  default = "${var.aws_region}a"
+  default = "ap-southeast-2a"
 }
 
 variable "az_b" {
   description = "Availability Zone B"
   type = string
-  default = "${var.aws_region}b"
+  default = "ap-southeast-2b"
 }
 
 variable "az_c" {
   description = "Availability Zone C"
   type = string
-  default = "${var.aws_region}c"
+  default = "ap-southeast-2c"
 }
 
 #Private subnet values 
